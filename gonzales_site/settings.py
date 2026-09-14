@@ -1,9 +1,10 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "replace-this-before-deploying"
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get("DEBUG", "FALSE").lower == "True"
+ALLOWED_HOSTS = [gonzales-dental-clinic.vercel.app]
 
 INSTALLED_APPS = [
     "django.contrib.admin",

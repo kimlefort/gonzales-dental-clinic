@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "replace-this-before-deploying"
-DEBUG = os.environ.get("DEBUG", "FALSE").lower == "True"
+DEBUG = os.environ.get("DEBUG", "FALSE").lower() == "True"
 ALLOWED_HOSTS = ["gonzales-dental-clinic.vercel.app", ".vercel.app", "localhost",]
 
 INSTALLED_APPS = [
@@ -43,4 +43,5 @@ USE_I18N = True
 USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

@@ -15,6 +15,16 @@ class WebsiteTests(TestCase):
             self.assertContains(response, option)
         self.assertNotContains(response, 'Mintal')
 
+    def test_demo_notice_distinguishes_proposal_from_real_clinic_details(self):
+        for url in ('/', '/services/', '/clinics/obrero/'):
+            with self.subTest(url=url):
+                response = self.client.get(url)
+                self.assertContains(response, 'id="demo-gate"')
+                self.assertContains(response, 'This is an independent design proposal, not the clinic’s official website.')
+                self.assertContains(response, 'The photos, clinic locations and contact details shown here are real.')
+                self.assertContains(response, 'This site does not book or confirm appointments.')
+                self.assertContains(response, 'View demo notice')
+
     def test_branch_links_work_without_javascript(self):
         for branch in BRANCHES:
             response = self.client.get('/', {'branch': branch['id']})

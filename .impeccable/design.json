@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T00:34:37Z",
+  "title": "Design System: Gonzales Dental website proposal",
+  "extensions": {
+    "colorMeta": {
+      "practice-green": {"role": "primary", "displayName": "Practice Green", "canonical": "#143d2d"},
+      "deep-green": {"role": "primary", "displayName": "Deep Green", "canonical": "#0e2f23"},
+      "warm-gold": {"role": "secondary", "displayName": "Warm Gold", "canonical": "#c6aa70"},
+      "ivory": {"role": "neutral", "displayName": "Ivory", "canonical": "#f7f4ec"},
+      "ink": {"role": "neutral", "displayName": "Ink Green", "canonical": "#183b2d"},
+      "muted": {"role": "neutral", "displayName": "Muted Green", "canonical": "#657269"},
+      "divider": {"role": "neutral", "displayName": "Pale Divider", "canonical": "#d9ded3"}
+    },
+    "typographyMeta": {
+      "display": {"displayName": "Display", "purpose": "Hero headings."},
+      "headline": {"displayName": "Headline", "purpose": "Section headings."},
+      "body": {"displayName": "Body", "purpose": "Reading copy."},
+      "label": {"displayName": "Label", "purpose": "Eyebrows and small navigation cues."}
+    },
+    "shadows": [
+      {"name": "mobile-contact", "value": "0 -5px 22px #0e2f2322", "purpose": "Separates the fixed mobile contact action from scrolling content."}
+    ],
+    "motion": [
+      {"name": "state-change", "value": "background 0.2s, color 0.2s, border-color 0.2s", "purpose": "Hover and focus transitions for interactive controls."}
+    ],
+    "breakpoints": [
+      {"name": "compact-navigation", "value": "850px"},
+      {"name": "mobile-layout", "value": "760px"}
+    ]
+  },
+  "components": [
+    {
+      "name": "Ivory Contact Button",
+      "kind": "button",
+      "refersTo": "button-ivory",
+      "description": "Hero contact action.",
+      "html": "<a class=\"ds-button-ivory\" href=\"#\">Contact your clinic ↗</a>",
+      "css": ".ds-button-ivory{display:inline-flex;align-items:center;justify-content:space-between;gap:28px;background:#f7f4ec;color:#143d2d;padding:14px 24px;border-radius:3px;font:500 13px 'DM Sans',Arial,sans-serif;text-decoration:none;transition:background .2s}.ds-button-ivory:hover{background:#c6aa70}.ds-button-ivory:focus-visible{outline:3px solid #a87625;outline-offset:5px}"
+    },
+    {
+      "name": "Gold Contact Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Primary call action in the contact panel.",
+      "html": "<a class=\"ds-button-gold\" href=\"#\">Call your clinic ↗</a>",
+      "css": ".ds-button-gold{display:inline-flex;align-items:center;justify-content:space-between;gap:28px;background:#c6aa70;color:#0e2f23;padding:14px 24px;border-radius:3px;font:500 13px 'DM Sans',Arial,sans-serif;text-decoration:none;transition:background .2s}.ds-button-gold:hover{background:#e1c990}.ds-button-gold:focus-visible{outline:3px solid #a87625;outline-offset:5px}"
+    },
+    {
+      "name": "Service Filter",
+      "kind": "chip",
+      "description": "Pill filter for treatment categories.",
+      "html": "<button class=\"ds-filter\" type=\"button\" aria-pressed=\"true\">General</button>",
+      "css": ".ds-filter{background:#143d2d;color:#fff;border:1px solid #143d2d;border-radius:30px;padding:9px 19px;font:12px 'DM Sans',Arial,sans-serif;cursor:pointer;min-height:44px}.ds-filter:hover{background:#0e2f23}.ds-filter:focus-visible{outline:3px solid #a87625;outline-offset:5px}"
+    },
+    {
+      "name": "Clinic Card",
+      "kind": "card",
+      "description": "Selected clinic presentation with a location cue.",
+      "html": "<article class=\"ds-clinic-card\"><small>DAVAO CITY · YOUR CLINIC</small><h3>Obrero</h3><p>Choose this clinic for contact details and directions.</p></article>",
+      "css": ".ds-clinic-card{background:#eeeee3;color:#183b2d;border:1px solid #d9ded3;padding:27px 22px;font-family:'DM Sans',Arial,sans-serif}.ds-clinic-card small{color:#886a2d;font-size:8px;letter-spacing:1.2px}.ds-clinic-card h3{font:500 36px/1.2 'Cormorant Garamond',Georgia,serif;margin:12px 0 15px}.ds-clinic-card p{font-size:12px;color:#657269;line-height:1.75;margin:0}"
+    },
+    {
+      "name": "Branch Picker",
+      "kind": "input",
+      "description": "Native branch selector used in the contact panel.",
+      "html": "<label class=\"ds-branch-label\" for=\"ds-branch\">YOUR PREFERRED CLINIC</label><select class=\"ds-branch-picker\" id=\"ds-branch\"><option>Obrero · Davao City</option><option>Matina · Davao City</option></select>",
+      "css": ".ds-branch-label{display:block;color:#c6aa70;font:600 9px 'DM Sans',Arial,sans-serif;letter-spacing:2.2px}.ds-branch-picker{display:block;width:100%;min-height:44px;background:#0e2f23;color:#f7f4ec;border:0;border-bottom:1px solid #ffffff30;padding:13px 0;font:19px 'DM Sans',Arial,sans-serif}.ds-branch-picker:focus-visible{outline:3px solid #a87625;outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Family Portrait",
+    "overview": "The site pairs published family and clinic photography with an editorial green, ivory, and gold layout. Large headings establish a calm, confident first impression; small labels and fine dividers organize the detail. This is a working design direction for the private proposal, subject to the clinic's approval.",
+    "keyCharacteristics": ["original practice imagery", "strong typography", "direct branch contact", "restrained ornament"],
+    "rules": [],
+    "dos": ["Do use real clinic and family imagery with clear captions and attribution.", "Do keep branch-specific contact details together and make the selected branch visible.", "Do make touch actions at least 44px tall."],
+    "donts": ["Don't imply that the site confirms an appointment; patients call or message the clinic.", "Don't present dated review snapshots as live ratings.", "Don't add unsupported treatment outcomes or staff claims."]
+  }
+}

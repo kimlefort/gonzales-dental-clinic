@@ -1,4 +1,39 @@
 (() => {
+  const demoGate = document.getElementById('demo-gate');
+  const demoEnter = document.getElementById('demo-gate-enter');
+  const demoNotice = document.getElementById('demo-notice-link');
+  const demoStorageKey = 'gonzales-demo-acknowledged-v1';
+  const pageElements = [...document.body.children].filter(el => el !== demoGate && el.tagName !== 'SCRIPT');
+  let previousFocus;
+  let previousInert = new Map();
+  function openDemoGate() {
+    if (!demoGate.hidden) return;
+    previousFocus = document.activeElement;
+    previousInert = new Map(pageElements.map(el => [el, el.inert]));
+    pageElements.forEach(el => { el.inert = true; });
+    demoGate.hidden = false;
+    document.body.classList.add('demo-gate-open');
+    demoEnter.focus({ preventScroll: true });
+  }
+  function closeDemoGate() {
+    if (demoGate.hidden) return;
+    demoGate.hidden = true;
+    document.body.classList.remove('demo-gate-open');
+    previousInert.forEach((inert, el) => { el.inert = inert; });
+    try { sessionStorage.setItem(demoStorageKey, 'yes'); } catch (_) { /* Storage is optional. */ }
+    if (previousFocus && previousFocus !== document.body) previousFocus.focus({ preventScroll: true });
+    else document.querySelector('.hero .button, .header-book')?.focus({ preventScroll: true });
+  }
+  demoEnter.addEventListener('click', closeDemoGate);
+  demoNotice.addEventListener('click', openDemoGate);
+  demoGate.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); closeDemoGate(); }
+    if (event.key === 'Tab') { event.preventDefault(); demoEnter.focus(); }
+  });
+  let demoSeen = false;
+  try { demoSeen = sessionStorage.getItem(demoStorageKey) === 'yes'; } catch (_) {}
+  if (!demoSeen) openDemoGate();
+
   const branches = JSON.parse(document.getElementById('branch-data').textContent);
   const selects = [...document.querySelectorAll('[data-branch-select]')];
   const cards = [...document.querySelectorAll('[data-branch-card]')];
@@ -94,6 +129,7 @@
   }
   filters.forEach(button => button.addEventListener('click', () => filterServices(button.dataset.filter)));
   document.querySelectorAll('[data-filter-link]').forEach(link => link.addEventListener('click', () => filterServices(link.dataset.filterLink)));
+  if (filters.length) filterServices(document.body.dataset.page === 'home' ? 'general' : 'all');
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('main-menu');
   function closeMenu() { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open navigation'); }

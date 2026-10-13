@@ -4,15 +4,17 @@ Active design: `templates/clinic/campaign.html`, its reusable `partials/`, `stat
 
 Second edition includes internal About, History, FAQs, ten treatment pages and four shareable branch pages. Branch selection updates Google maps, contacts, Facebook destinations and explicitly dated review-rating snapshots. The new campaign portrait and Obrero interior are real published assets. Other branches link to their own Facebook photography until approved interior images are available.
 
+The Laplace Labs demo notice appears once per browser tab session. It explains that the site is a proposal while the photos, clinic locations and contact details are real. Use “View demo notice” in the footer to show it again during a presentation.
+
 ## Start locally
 
 1. Create and activate a Python virtual environment.
 2. Run `pip install -r requirements.txt`.
 3. Run `python manage.py migrate`.
 4. Run `python manage.py test clinic` to check rendering, branch contacts, and the disabled prototype booking endpoint.
-5. Run `python manage.py runserver` and open `http://127.0.0.1:8000/`.
+5. Run `DEBUG=True python manage.py runserver` and open `http://localhost:8000/`.
 
-If port 8000 is already serving an older copy, run `python manage.py runserver 8001` and open `http://127.0.0.1:8001/` instead. Open the project folder containing `manage.py` in VS Code; use Terminal → New Terminal for these commands. Do not open the Django HTML files directly or with Live Server.
+If port 8000 is already serving an older copy, run `DEBUG=True python manage.py runserver 8001` and open `http://localhost:8001/` instead. Open the project folder containing `manage.py` in VS Code; use Terminal → New Terminal for these commands. Do not open the Django HTML files directly or with Live Server.
 
 ## URLs to try
 

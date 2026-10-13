@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "replace-this-before-deploying"
-DEBUG = os.environ.get("DEBUG", "FALSE").lower() == "True"
+DEBUG = os.environ.get("DEBUG", "FALSE").lower() == "true"
 ALLOWED_HOSTS = ["gonzales-dental-clinic.vercel.app", ".vercel.app", "localhost",]
 
 INSTALLED_APPS = [
